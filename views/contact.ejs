@@ -2,6 +2,13 @@
   <div class="row">
     <div class="col-md-8">
       <h2>Daftar Contact</h2>
+
+      <a href="/contact/add" class="btn btn-primary btn-sm mb-1">Tambah Data Contact</a>
+
+      <% if (msg.length !== 0) { %>
+      <div class="alert alert-success" role="alert"><%= msg %></div>
+      <% } %>
+
       <table class="table">
         <thead>
           <tr>
@@ -24,7 +31,7 @@
             <td><%= contact.nama %></td>
             <td><%= contact.noHP %></td>
             <td>
-              <a href="/contact/<%= contact.nama %> " class="btn btn-primary badge rounded-pill"><i class="bi bi-info-circle"></i> detail</a>
+              <a href="/contact/<%= contact.nama %> " class="btn btn-success badge btn-sm rounded-pill"><i class="bi bi-info-circle"></i> detail</a>
             </td>
           </tr>
           <% }) %>
