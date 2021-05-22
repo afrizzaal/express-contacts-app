@@ -44,4 +44,21 @@ const cekDuplikat = (nama) => {
   return contacts.find((contact) => contact.nama === nama);
 };
 
-module.exports = { loadContact, findContact, addContact, cekDuplikat };
+// Hapus contact
+const deleteContact = (nama) => {
+  const contacts = loadContact();
+  const filteredContacts = contacts.filter((contact) => contact.nama !== nama);
+  saveContacts(filteredContacts);
+};
+
+// Mengedit contacts
+const updateContacts = (contactBaru) => {
+  const contacts = loadContact();
+  // Hilangkan contact lama yang namanya sama dengan oldNama
+  const filteredContacts = contacts.filter((contact) => contact.nama !== contactBaru.oldNama);
+  delete contactBaru.oldNama;
+  filteredContacts.push(contactBaru);
+  saveContacts(filteredContacts);
+};
+
+module.exports = { loadContact, findContact, addContact, cekDuplikat, deleteContact, updateContacts };
